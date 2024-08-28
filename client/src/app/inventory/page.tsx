@@ -2,7 +2,7 @@
 
 import { useGetProductsQuery } from "@/state/api";
 import Header from "@/app/(components)/Header";
-import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
+import { DataGrid, GridColDef, GridValueGetter } from "@mui/x-data-grid";
 
 const columns: GridColDef[] = [
   { field: "productId", headerName: "ID", width: 90 },
@@ -12,14 +12,14 @@ const columns: GridColDef[] = [
     headerName: "Preis",
     width: 110,
     type: "number",
-    valueGetter: (params: GridValueGetterParams) => `$${params.row.price}`, // Explicit typing
+    valueGetter: (params: GridValueGetter) => `$${params.row.price}`, // Changed to GridValueGetter
   },
   {
     field: "rating",
     headerName: "Bewertung",
     width: 110,
     type: "number",
-    valueGetter: (params: GridValueGetterParams) => params.row.rating ? params.row.rating : "Nicht verfügbar", // Explicit typing
+    valueGetter: (params: GridValueGetter) => params.row.rating ? params.row.rating : "Nicht verfügbar", // Changed to GridValueGetter
   },
   {
     field: "stockQuantity",
@@ -59,4 +59,3 @@ const Inventory = () => {
 };
 
 export default Inventory;
-
