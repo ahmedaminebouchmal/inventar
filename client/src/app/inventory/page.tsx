@@ -12,20 +12,27 @@ const columns: GridColDef[] = [
     headerName: "Preis",
     width: 110,
     type: "number",
-    valueGetter: (params: GridValueGetter) => `$${params.row.price}`, // Changed to GridValueGetter
+    valueGetter: (params: GridValueGetter) => `$${params.row.price}`, 
   },
   {
     field: "rating",
     headerName: "Bewertung",
     width: 110,
     type: "number",
-    valueGetter: (params: GridValueGetter) => params.row.rating ? params.row.rating : "Nicht verfügbar", // Changed to GridValueGetter
+    valueGetter: (params: GridValueGetter) => params.row.rating ? params.row.rating : "Nicht verfügbar", 
   },
   {
     field: "stockQuantity",
     headerName: "Lagerbestand",
     width: 150,
     type: "number",
+  },
+  {
+    field: "invalidField",
+    headerName: "Ungültig",
+    width: 120,
+    type: "string",
+    valueGetter: (params: GridValueGetter) => params.invalidProp, 
   },
 ];
 
@@ -50,7 +57,7 @@ const Inventory = () => {
       <DataGrid
         rows={products}
         columns={columns}
-        getRowId={(row) => row.productId}
+        getRowId={(row) => row.id} 
         checkboxSelection
         className="bg-white shadow rounded-lg border border-gray-200 mt-5 !text-gray-700"
       />
